@@ -24,6 +24,12 @@ class Customer < ActiveRecord::Base
 
   def self.with_valid_email
     # YOUR CODE HERE to return only customers with valid email addresses (containing '@')
+    Customer.where("email LIKE '%@%'")
   end
   # etc. - see README.md for more details
+
+  def self.with_dot_org_email
+    # return only customers with email addresses containing .org
+    Customer.where("email LIKE '%@%.org'")
+  end
 end
