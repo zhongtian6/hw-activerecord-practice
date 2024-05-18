@@ -73,4 +73,9 @@ class Customer < ActiveRecord::Base
     Customer.where("first = 'Gussie' AND last = 'Murray'")
             .update(birthdate: Time.parse("2004-02-08"))
   end
+
+  def self.change_all_invalid_emails_to_blank
+    Customer.where("email NOT LIKE '%@%'")
+            .update(email: '')
+  end
 end
