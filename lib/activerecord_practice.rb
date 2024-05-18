@@ -55,4 +55,10 @@ class Customer < ActiveRecord::Base
     Customer.where("email LIKE '%@%'")
             .where("birthdate < '1980-01-01'")
   end
+
+  def self.last_names_starting_with_b
+    # return only customers with last name starting with b sort by birthdate
+    Customer.where("last LIKE 'B%'")
+            .order("birthdate")
+  end
 end
