@@ -78,4 +78,9 @@ class Customer < ActiveRecord::Base
     Customer.where("email NOT LIKE '%@%'")
             .update(email: '')
   end
+
+  def self.delete_meggie_herman
+    Customer.where("first = 'Meggie' AND last = 'Herman'")
+            .delete_all
+  end
 end
