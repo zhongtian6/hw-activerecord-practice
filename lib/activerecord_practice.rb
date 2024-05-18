@@ -32,4 +32,11 @@ class Customer < ActiveRecord::Base
     # return only customers with email addresses containing .org
     Customer.where("email LIKE '%@%.org'")
   end
+
+  def self.with_invalid_email
+    # return only customers with invalid email addresses (no @) but not blank
+    Customer.where("email IS NOT NULL")
+            .where("email <> ''")
+            .where("email NOT LIKE '%@%'")
+  end
 end
