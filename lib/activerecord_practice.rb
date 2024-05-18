@@ -44,4 +44,9 @@ class Customer < ActiveRecord::Base
     # return only customers with blank email addresses
     Customer.where("email = '' OR email IS NULL")
   end
+
+  def self.born_before_1980
+    # return only customers born before 1980
+    Customer.where("birthdate < '1980-01-01'")
+  end
 end
