@@ -61,4 +61,10 @@ class Customer < ActiveRecord::Base
     Customer.where("last LIKE 'B%'")
             .order("birthdate")
   end
+
+  def self.twenty_youngest
+    # return first 20 youngest customers
+    Customer.order("birthdate DESC")
+            .limit(20)
+  end
 end
