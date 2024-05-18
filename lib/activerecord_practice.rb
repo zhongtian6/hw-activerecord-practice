@@ -39,4 +39,9 @@ class Customer < ActiveRecord::Base
             .where("email <> ''")
             .where("email NOT LIKE '%@%'")
   end
+
+  def self.with_blank_email
+    # return only customers with blank email addresses
+    Customer.where("email = '' OR email IS NULL")
+  end
 end
