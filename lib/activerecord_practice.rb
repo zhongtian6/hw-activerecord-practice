@@ -67,4 +67,10 @@ class Customer < ActiveRecord::Base
     Customer.order("birthdate DESC")
             .limit(20)
   end
+
+  def self.update_gussie_murray_birthdate
+    # Update Gussie Murray's birthdate to Feb 08, 2004
+    Customer.where("first = 'Gussie' AND last = 'Murray'")
+            .update(birthdate: Time.parse("2004-02-08"))
+  end
 end
