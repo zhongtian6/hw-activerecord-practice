@@ -47,13 +47,13 @@ class Customer < ActiveRecord::Base
 
   def self.born_before_1980
     # return only customers born before 1980
-    Customer.where("birthdate < '1980-01-01'")
+    Customer.where("birthdate < '#{Time.parse("1980-01-01")}'")
   end
 
   def self.with_valid_email_and_born_before_1980
     # return only customers with valid email and born before 1980
     Customer.where("email LIKE '%@%'")
-            .where("birthdate < '1980-01-01'")
+            .where("birthdate < '#{Time.parse("1980-01-01")}'")
   end
 
   def self.last_names_starting_with_b
@@ -85,7 +85,7 @@ class Customer < ActiveRecord::Base
   end
 
   def self.delete_everyone_born_before_1978
-    Customer.where("birthdate < '1978-01-01'")
+    Customer.where("birthdate < '#{Time.parse("1978-01-01")}'")
             .delete_all
   end
 end
