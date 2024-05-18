@@ -83,4 +83,9 @@ class Customer < ActiveRecord::Base
     Customer.where("first = 'Meggie' AND last = 'Herman'")
             .delete_all
   end
+
+  def self.delete_everyone_born_before_1978
+    Customer.where("birthdate < '1978-01-01'")
+            .delete_all
+  end
 end
