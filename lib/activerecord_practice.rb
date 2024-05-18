@@ -49,4 +49,10 @@ class Customer < ActiveRecord::Base
     # return only customers born before 1980
     Customer.where("birthdate < '1980-01-01'")
   end
+
+  def self.with_valid_email_and_born_before_1980
+    # return only customers with valid email and born before 1980
+    Customer.where("email LIKE '%@%'")
+            .where("birthdate < '1980-01-01'")
+  end
 end
